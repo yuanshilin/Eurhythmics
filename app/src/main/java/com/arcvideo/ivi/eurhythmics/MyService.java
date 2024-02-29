@@ -3,6 +3,7 @@ package com.arcvideo.ivi.eurhythmics;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import com.tencent.mars.xlog.Log;
 
 public class MyService extends Service {
 
@@ -18,12 +19,13 @@ public class MyService extends Service {
     public void onCreate() {
         super.onCreate();
         // Start the service
-        Log.d
+        Log.d(TAG, "onCreate the service");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         // Stop the service
+        Log.d(TAG, "onDestroy the service");
     }
 }
