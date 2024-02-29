@@ -10,6 +10,17 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        //central
+        maven("https://maven.aliyun.com/repository/central" )
+        //jcenter\public
+        maven("https://maven.aliyun.com/repository/public" )
+        //google
+        maven ("https://maven.aliyun.com/repository/google")
+        //gradle-plugin
+        maven ("https://maven.aliyun.com/repository/gradle-plugin" )
+        maven ("https://jitpack.io" )
+        maven ("https://plugins.gradle.org/m2/")
+
     }
 }
 

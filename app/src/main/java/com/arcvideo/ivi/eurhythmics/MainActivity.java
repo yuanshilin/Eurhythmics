@@ -3,7 +3,7 @@ package com.arcvideo.ivi.eurhythmics;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
+import com.tencent.mars.xlog.Log;
 import android.widget.Button;
 
 import com.arcvideo.ivi.light.utils.MarsLog;
