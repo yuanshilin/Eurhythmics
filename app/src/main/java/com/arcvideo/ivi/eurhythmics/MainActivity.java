@@ -5,14 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 
+import com.arcvideo.ivi.light.car.base.IShow;
 import com.arcvideo.ivi.light.musical.Factory;
 import com.arcvideo.ivi.light.musical.Listener;
 import com.arcvideo.ivi.light.musical.Visualizer;
 import com.arcvideo.ivi.light.musical.VisualizerType;
 import com.arcvideo.ivi.light.utils.RGB;
+import com.arcvideo.ivi.light.car.rk3588.Rk3588Show;
 import com.tencent.mars.xlog.Log;
 import android.widget.Button;
 
@@ -35,19 +36,20 @@ public class MainActivity extends AppCompatActivity {
 
         MarsLog.init("","",7);
 
+        IShow show = new Rk3588Show(getApplicationContext());
         btnStart = findViewById(R.id.btnStart);
         btnStop = findViewById(R.id.btnStop);
 
 
-            if (checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-                Log.d(TAG, "requestPermissions RECORD_AUDIO");
-                requestPermissions(new String[]{android.Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO);
-            }
+        if (checkSelfPermission(android.Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "requestPermissions RECORD_AUDIO");
+            requestPermissions(new String[]{android.Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO);
+        }
 
-            if (checkSelfPermission(android.Manifest.permission.MODIFY_AUDIO_SETTINGS) != PackageManager.PERMISSION_GRANTED) {
-                Log.d(TAG, "requestPermissions MODIFY_AUDIO_SETTINGS");
-                requestPermissions(new String[]{Manifest.permission.MODIFY_AUDIO_SETTINGS}, REQUEST_RECORD_AUDIO);
-            }
+        if (checkSelfPermission(android.Manifest.permission.MODIFY_AUDIO_SETTINGS) != PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "requestPermissions MODIFY_AUDIO_SETTINGS");
+            requestPermissions(new String[]{Manifest.permission.MODIFY_AUDIO_SETTINGS}, REQUEST_RECORD_AUDIO);
+        }
 
 
 
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onColor(RGB rgb) {
                         Log.d(TAG, "onColor: " + rgb);
+                        show.handleNormal(rgb,3);
                     }
                 });
 
